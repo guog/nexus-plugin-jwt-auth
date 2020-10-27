@@ -22,7 +22,7 @@ export const plugin: RuntimePlugin<Settings, 'required'> = settings => project =
 
           if (settings.useCookie && req.cookies && settings.cookieName && req.cookies[settings.cookieName]) {
             token = req.cookies[settings.cookieName];
-          } else if (req.headers.authorization && req.headers.authorization.split(' ')[0] === 'Bearer') {
+          } else if (req && req.headers && req.headers.authorization && req.headers.authorization.split(' ')[0] === 'Bearer') {
             token = req.headers.authorization.split(' ')[1]
           }
 
